@@ -1,0 +1,14 @@
+{
+  "name": "fe_demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "start": "tsc index.ts && node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.0.4"
+  }
+}

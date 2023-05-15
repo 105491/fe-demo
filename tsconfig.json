@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "types": ["vite/client", "node"],
+    "paths": {
+      "@/*": ["src/*"],
+    },
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "*.ts"]
+}
