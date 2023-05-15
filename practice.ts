@@ -19,4 +19,22 @@
 */
 export function demo (){
   console.log('test start')
+
+  interface IItem {
+    id: number
+    uname: string
+  }
+
+  var a: IItem[] = [{id: 1, uname: '123'}, {id: 2, uname: '1234'}, {id: 3, uname: '1234'}]
+
+  function uniquePush<T>(sourceItem: T, targetArray: T[], ident: keyof T) {
+    let targetIndex = targetArray.findIndex(obj => obj[ident] === sourceItem[ident]);
+    if (targetIndex === -1) {
+      targetIndex = targetArray.length;
+    }
+
+    targetArray.splice(targetIndex, 1, sourceItem);
+  };
+
+  uniquePush<IItem>({id: 1, uname: 'dddd'}, a, 'id');
 }
