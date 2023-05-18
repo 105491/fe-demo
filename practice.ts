@@ -1,4 +1,4 @@
-// var a = [{id: 1, uname: '123'}, {id: 2, uname: '1234'}, {id: 3, uname: '1234'}]
+// var a = [{ id: 1, uname: '123' }, { id: 2, uname: '1234' }, { id: 3, uname: '1234' }]
 
 // export function uniquePush(sourceItem, targetArray, ident) {
 //   let targetIndex = targetArray.findIndex(obj => obj[ident] === sourceItem[ident]);
@@ -9,7 +9,7 @@
 //   targetArray.splice(targetIndex, 1, sourceItem);
 // };
 
-// uniquePush({id: 1, uname: 'dddd'}, a, 'id');
+// uniquePush({ id: 1, uname: 'dddd' }, a, 'id');
 
 /* 
   使用 ts 改写上述 js 代码
@@ -17,6 +17,20 @@
   2. 函数要通过泛型支持不同类型的元组去重 push
   3. 要对实例中的元数据进行类型定义
 */
-export function demo (){
-  console.log('test start')
+
+
+// 林泽鹏的作业成果
+function uniquePush<T extends Record<string, any>>(sourceItem: T, targetArray: T[], ident: keyof T): void {
+  let targetIndex = targetArray.findIndex(obj => obj[ident] === sourceItem[ident]);
+  if (targetIndex === -1) {
+    targetIndex = targetArray.length;
+  }
+  targetArray.splice(targetIndex, 1, sourceItem);
+};
+
+interface IData {
+  id: number,
+  uname: string
 }
+var a: IData[] = [{ id: 1, uname: '123' }, { id: 2, uname: '1234' }, { id: 3, uname: '1234' }];
+uniquePush({ id: 1, uname: 'dddd' }, a, 'id');
