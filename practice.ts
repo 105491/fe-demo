@@ -17,6 +17,19 @@
   2. 函数要通过泛型支持不同类型的元组去重 push
   3. 要对实例中的元数据进行类型定义
 */
-export function demo (){
-  console.log('test start')
+
+export type Item = {
+  id: number,
+  uname: string,
+}
+
+type UniquePushFun<T> = (sourceItem: T , targetArray: T[], ident: keyof T) => T[];
+
+export const uniquePush: UniquePushFun<Item> = function(sourceItem, targetArray, ident) {
+  let targetIndex = targetArray.findIndex(obj => obj[ident] === sourceItem[ident]);
+  if (targetIndex === -1) {
+    targetIndex = targetArray.length;
+  }
+  targetArray.splice(targetIndex, 1, sourceItem);
+  return targetArray
 }
