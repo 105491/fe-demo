@@ -17,6 +17,21 @@
   2. 函数要通过泛型支持不同类型的元组去重 push
   3. 要对实例中的元数据进行类型定义
 */
+interface T {
+  id: number;
+  uname: string;
+}
+type TypeId = 'id'
+type TypeArr<T> = Array<T>;
+const a: TypeArr<T> =  [{id: 1, uname: '123'}, {id: 2, uname: '1234'}, {id: 3, uname: '1234'}]
+export function uniquePush(sourceItem: T, targetArray: TypeArr<T>, ident: TypeId): void {
+  let targetIndex: number = targetArray.findIndex(obj => obj[ident] === sourceItem[ident]);
+  if (targetIndex === -1) {
+    targetIndex = targetArray.length;
+  }
+  targetArray.splice(targetIndex, 1, sourceItem);
+};
+uniquePush({id: 1, uname: 'dddd'}, a, 'id');
 export function demo (){
   console.log('test start')
 }
