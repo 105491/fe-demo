@@ -24,3 +24,11 @@
 /* 
   1. 模仿上述例子，实现一个类型守卫函数
 */
+
+
+/* 
+  2. 模仿例子实现一个类型提取，获取某个函数所有参数的类型
+*/
+// 例子：
+// type FirstType<T extends unknown[]> = T extends [infer a, ...unknown[]] ? a : never;
+// type first = FirstType<[1, 2]>;
