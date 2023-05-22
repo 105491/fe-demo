@@ -13,7 +13,6 @@ let AB: Atype | Btype = {a: 1}
 let AandB: Atype & Btype = {a: 1, b: 'string'}
 
 
-
 // 类型保护和类型守卫 （type guard）
 interface A {a:1, a1:2}
 interface B {b:1, b1:2}
@@ -48,6 +47,30 @@ function log2(arg:A | B) {
     console.log(arg.b1);
   }
 }
+// another
+type Fish = {
+  swim: () => void
+}
+type Dog = {
+  bark: () => void
+}
+
+function isFish(pet: Fish | Dog): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}
+const pet: Fish = {
+  swim: () => true
+}
+function petAction(pet: Fish | Dog ){
+  if (isFish(pet)) {
+    pet.swim();
+  } else {
+    pet.bark();
+  }
+}
+
+petAction(pet)
+
 
 // 高级类型 
 // 索引类型 
