@@ -21,6 +21,33 @@
 // }
 
 // petAction(pet)
+interface Circle {
+  key: "circle";
+  radius: number;
+}
+
+interface Square {
+  key: "square";
+  sideLength: number;
+}
+
+type Shape = Circle | Square;
+
+function isCircle(shape: Shape): shape is Circle {
+  return shape.key === "circle";
+}
+function calculateArea(shape: Shape): number {
+  if (isCircle(shape)) {
+    return Math.PI * shape.radius * shape.radius;
+  } else {
+    return shape.sideLength * shape.sideLength;
+  }
+}
+const pizza: Circle = {
+  key: "circle",
+  radius:8,
+}
+calculateArea(pizza)
 /* 
   1. 模仿上述例子，实现一个类型守卫函数
 */
