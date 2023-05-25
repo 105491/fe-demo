@@ -32,3 +32,7 @@
 // 例子：
 // type FirstType<T extends unknown[]> = T extends [infer a, ...unknown[]] ? a : never;
 // type first = FirstType<[1, 2]>;
+type GetReturnValue<X> = X extends () => infer Value ? Value : never;
+
+type AType = GetReturnValue<() => string>
+type BType = GetReturnValue<() => number>
