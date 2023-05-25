@@ -20,12 +20,12 @@
 
 export function demo (){
   console.log('test start')
-  interface T {
+  interface TypeInter {
     id: number;
     uname: string;
   }
-  type TypeArr<T> = Array<T>;
-  const a: TypeArr<T> =  [{id: 1, uname: '123'}, {id: 2, uname: '1234'}, {id: 3, uname: '1234'}]
+  // type TypeArr<T> = Array<T>;
+  const a: TypeArr<TypeInter> =  [{id: 1, uname: '123'}, {id: 2, uname: '1234'}, {id: 3, uname: '1234'}]
   function uniquePush<T>(sourceItem: T, targetArray: TypeArr<T>, ident: keyof T): void {
     let targetIndex: number = targetArray.findIndex(obj => obj[ident] === sourceItem[ident]);
     if (targetIndex === -1) {
@@ -33,5 +33,6 @@ export function demo (){
     }
     targetArray.splice(targetIndex, 1, sourceItem);
   };
-  uniquePush({id: 1, uname: 'dddd'}, a, 'id');
+  uniquePush<TypeInter>({id: 1, uname: 'dddd'}, a, 'id');
 }
+
