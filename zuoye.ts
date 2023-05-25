@@ -31,7 +31,7 @@ const data: Keys[] = [
   { id: 3, uname: '1234' },
 ];
 
-function uniquePush(item: Keys, arr: Keys[], key: Types): void {
+function uniquePush<A extends Keys, B extends Types>(item: A, arr: A[], key: B): void {
   let targetIndex = arr.findIndex((obj: Keys) => obj[key] === item[key]);
   if (targetIndex === -1) {
     targetIndex = arr.length;
@@ -41,7 +41,7 @@ function uniquePush(item: Keys, arr: Keys[], key: Types): void {
 }
 
 const aaa = { id: 4, uname: '123' };
-uniquePush(aaa, data, 'id');
+uniquePush<Keys, Types>(aaa, data, 'id');
 console.log('结果--', data);
 
 export function demo() {
