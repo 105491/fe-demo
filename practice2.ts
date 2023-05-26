@@ -24,6 +24,26 @@
 /* 
   1. 模仿上述例子，实现一个类型守卫函数
 */
+interface A1 {
+  m1: 'one',
+  m2: number
+}
+
+interface A2 {
+  m1: 'two',
+  m3: string
+}
+
+function getObjectKey(params: A1 | A2):string {
+  const { m1 } = params
+
+  switch (m1) {
+    case 'one':
+      return String((params as A1).m2)
+    case 'two':
+      return (params as A2).m3
+  }
+}
 
 
 /* 
