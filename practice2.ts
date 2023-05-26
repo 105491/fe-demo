@@ -50,5 +50,4 @@ type ArgsType<T> = T extends (...args: infer A) => any ? A : never;
 function testFunction(a: string, b: number, c: boolean) {
   return b + 10101010;
 }
-
 type TestFuncArgs = ArgsType<typeof testFunction>;
